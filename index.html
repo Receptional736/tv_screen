@@ -1,1 +1,411 @@
-sssssssssssssss
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>iGaming Industry Weekly Update</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100vh;
+      position: relative;
+    }
+    
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 1s ease-in-out;
+    }
+    
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .slide-header {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    
+    .slide-number {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.3em;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .content-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 20px 0;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      animation: fadeInUp 1s ease-in-out;
+    }
+    
+    .highlight {
+      background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+    
+    .stat-box {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin: 10px;
+      animation: pulse 2s infinite;
+    }
+    
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ffd700, #ff6b6b);
+      width: 0%;
+      animation: progressAnimation 10s linear infinite;
+    }
+    
+    .slide-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .dot.active {
+      background: #ffd700;
+      transform: scale(1.3);
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      line-height: 1.6;
+    }
+    
+    li:before {
+      content: "▸ ";
+      color: #ffd700;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    
+    @keyframes progressAnimation {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    
+    .icon {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      .content-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide active">
+      <div class="slide-header">
+        <div class="icon">🎰</div>
+        <h1>iGaming Industry</h1>
+        <h2>Weekly Intelligence Report</h2>
+        <div class="subtitle">Trends • Technology • Regulation • Innovation</div>
+      </div>
+      <div class="content-card">
+        <p style="text-align: center; font-size: 1.2em; line-height: 1.8;">
+          Your comprehensive overview of the latest developments in the global iGaming sector
+        </p>
+        <div style="text-align: center; margin-top: 20px;">
+          <span class="stat-box">📈 Market Insights</span>
+          <span class="stat-box">⚖️ Regulatory Updates</span>
+          <span class="stat-box">🚀 Tech Innovation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Industry Leadership & Media -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-number">Industry Leadership</span>
+        <h2>Key Players & Media Evolution</h2>
+      </div>
+      <div class="content-card">
+        <ul>
+          <li><span class="highlight">Brett Smiley</span> leads Third Planet LLC, operating Casino Reports, Lottery Geeks, and Props.com - driving vertical specialization in U.S. online gambling coverage</li>
+          <li>Former Sports Handle co-founder brings consumer protection and public policy focus to iGaming journalism</li>
+          <li><span class="highlight">Sebastian Jarosch</span> (Mithrillium Media) highlights shift toward UX-focused affiliate models after 15+ years in the industry</li>
+          <li>Affiliate programs now prioritize personalization, content relevance, and seamless customer journeys for higher conversions</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 3: Market Developments -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-number">Market Overview</span>
+        <h2>Growth & Expansion Trends</h2>
+      </div>
+      <div class="content-card">
+        <ul>
+          <li><span class="highlight">New Jersey</span> online gaming continues growth - debate ongoing whether iGaming cannibalizes or expands traditional casino market</li>
+          <li>Brick-and-mortar operators urged to modernize and integrate digital offerings</li>
+          <li><span class="highlight">Apollo Fund</span> acquires IGT's gaming and digital assets, continuing operations under IGT umbrella</li>
+          <li>Seven bidders compete for <span class="highlight">three New York downstate casino licenses</span> - heightened U.S. land-based expansion competition</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 4: Technology & Innovation -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-number">Tech Innovation</span>
+        <h2>Product Launches & Gaming Tech</h2>
+      </div>
+      <div class="content-card">
+        <ul>
+          <li><span class="highlight">AGS</span> introduces Mariachi Fortune Trio and Bonus Spin Xtreme progressive system</li>
+          <li><span class="highlight">Ainsworth</span> launches Five Fortunes series with innovative "five-pot mechanic" on A-STAR Raptor cabinet</li>
+          <li>Neon's Bonus Blast feature gaining traction in gaming cabinet technology</li>
+          <li><span class="highlight">EveryMatrix</span> spotlights North American market developments at ICE Barcelona 2025</li>
+          <li>Fintech integration and responsible gaming tools becoming key differentiators</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 5: Upcoming Events -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-number">Industry Calendar</span>
+        <h2>Key 2025 Events & Conferences</h2>
+      </div>
+      <div class="content-card">
+        <ul>
+          <li><span class="highlight">SiGMA Euro-Med</span> - Malta (September 1-3, 2025)</li>
+          <li><span class="highlight">Vend ASEAN</span> - Thailand (September 2-4, 2025)</li>
+          <li><span class="highlight">Indian Gaming Association Mid-Year Expo</span> - Minnesota, USA (September 8-10, 2025)</li>
+          <li>Industry focus areas: Responsible gaming, tribal casino development, iGaming expansion strategies</li>
+          <li>Growing emphasis on networking and knowledge-sharing across global markets</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 6: Regulatory & Compliance -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-number">Regulatory Focus</span>
+        <h2>Compliance & Privacy Standards</h2>
+      </div>
+      <div class="content-card">
+        <ul>
+          <li>European Gaming Media implements <span class="highlight">GDPR-compliant</span> cookie and privacy management frameworks</li>
+          <li>User-consent-based data handling reflects evolving privacy norms in iGaming content sector</li>
+          <li>Advertising cookies conform to YourOnlineChoices.com standards</li>
+          <li>Industry-wide push for <span class="highlight">legal, transparent, and user-respecting</span> data practices</li>
+          <li>Unauthorized commercial redistribution of proprietary content increasingly enforced</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 7: Key Takeaways -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-number">Summary</span>
+        <h2>Weekly Key Takeaways</h2>
+      </div>
+      <div class="content-card">
+        <ul>
+          <li>🎯 <span class="highlight">UX-focused strategies</span> dominating affiliate marketing and user retention</li>
+          <li>📊 Online/offline integration crucial for traditional casino operators</li>
+          <li>🔧 Advanced gaming cabinets and progressive systems driving product innovation</li>
+          <li>🌍 Global conference circuit thriving with focus on emerging markets</li>
+          <li>🔒 Privacy compliance and responsible gaming becoming competitive necessities</li>
+          <li>💼 M&A activity reshaping major gaming asset ownership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <div class="slide-indicator">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+    <span class="dot" onclick="goToSlide(3)"></span>
+    <span class="dot" onclick="goToSlide(4)"></span>
+    <span class="dot" onclick="goToSlide(5)"></span>
+    <span class="dot" onclick="goToSlide(6)"></span>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach(slide => {
+        slide.classList.remove('active');
+      });
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      
+      // Reset progress bar animation
+      const progressFill = document.querySelector('.progress-fill');
+      progressFill.style.animation = 'none';
+      setTimeout(() => {
+        progressFill.style.animation = 'progressAnimation 10s linear infinite';
+      }, 10);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      showSlide(currentSlide);
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 10000);
+    }
+
+    // Auto-advance slides every 10 seconds
+    slideInterval = setInterval(nextSlide, 10000);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        nextSlide();
+        clearInterval(slideInterval);
+        slideInterval = set
