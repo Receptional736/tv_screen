@@ -3,409 +3,393 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>iGaming Industry Weekly Update</title>
+  <title>iGaming Industry Pulse - Weekly Insights</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      overflow: hidden;
-      height: 100vh;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 100vh;
-      position: relative;
-    }
-    
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       padding: 40px;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: all 1s ease-in-out;
+      position: relative;
+      min-height: 600px;
     }
-    
-    .slide.active {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .slide-header {
+
+    .header {
       text-align: center;
       margin-bottom: 30px;
-      animation: fadeInDown 1s ease-in-out;
+      position: relative;
     }
-    
-    .slide-number {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 5px 15px;
-      border-radius: 20px;
+
+    .logo {
       display: inline-block;
-      margin-bottom: 10px;
-      font-size: 14px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
-    
+
     h1 {
-      font-size: 3em;
+      color: #333;
+      font-size: 2.5rem;
       margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    
-    h2 {
-      font-size: 2.2em;
-      margin-bottom: 20px;
-      color: #ffd700;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    
-    .subtitle {
-      font-size: 1.3em;
-      opacity: 0.9;
-      margin-bottom: 20px;
-    }
-    
-    .content-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      margin: 20px 0;
-      max-width: 900px;
-      width: 100%;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      animation: fadeInUp 1s ease-in-out;
-    }
-    
-    .highlight {
-      background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: bold;
-    }
-    
-    .stat-box {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin: 10px;
       animation: pulse 2s infinite;
     }
-    
-    .progress-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.2);
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
     }
-    
+
+    .subtitle {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #ffd700, #ff6b6b);
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
       width: 0%;
-      animation: progressAnimation 10s linear infinite;
+      animation: progress 10s linear infinite;
     }
-    
-    .slide-indicator {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
+
+    @keyframes progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .content-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+      display: none;
+    }
+
+    .content-section.active {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+
+    .section-title {
+      color: #764ba2;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      padding-left: 20px;
+      border-left: 4px solid #667eea;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .info-card h3 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .info-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .highlight-box h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .highlight-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .highlight-box li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .highlight-box li:last-child {
+      border-bottom: none;
+    }
+
+    .indicator-dots {
       display: flex;
+      justify-content: center;
       gap: 10px;
-      z-index: 100;
+      margin-top: 30px;
     }
-    
+
     .dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
+      background: #e0e0e0;
+      transition: all 0.3s ease;
       cursor: pointer;
-      transition: all 0.3s;
     }
-    
+
     .dot.active {
-      background: #ffd700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       transform: scale(1.3);
     }
-    
-    ul {
-      list-style: none;
-      padding-left: 0;
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      color: #999;
+      font-size: 0.9rem;
     }
-    
-    li {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      line-height: 1.6;
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #667eea;
+      color: white;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      margin-right: 8px;
     }
-    
-    li:before {
-      content: "▸ ";
-      color: #ffd700;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
-    
-    @keyframes progressAnimation {
-      from {
-        width: 0%;
-      }
-      to {
-        width: 100%;
-      }
-    }
-    
-    .icon {
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-    
+
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-      }
-      h2 {
-        font-size: 1.5em;
-      }
-      .content-card {
-        padding: 20px;
-      }
+      h1 { font-size: 2rem; }
+      .section-title { font-size: 1.5rem; }
+      .container { padding: 20px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Slide 1: Title Slide -->
-    <div class="slide active">
-      <div class="slide-header">
-        <div class="icon">🎰</div>
-        <h1>iGaming Industry</h1>
-        <h2>Weekly Intelligence Report</h2>
-        <div class="subtitle">Trends • Technology • Regulation • Innovation</div>
+    <div class="header">
+      <div class="logo">iGaming Pulse 2025</div>
+      <h1>Weekly Industry Intelligence</h1>
+      <p class="subtitle">Real-time insights from the global iGaming ecosystem</p>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
       </div>
-      <div class="content-card">
-        <p style="text-align: center; font-size: 1.2em; line-height: 1.8;">
-          Your comprehensive overview of the latest developments in the global iGaming sector
-        </p>
-        <div style="text-align: center; margin-top: 20px;">
-          <span class="stat-box">📈 Market Insights</span>
-          <span class="stat-box">⚖️ Regulatory Updates</span>
-          <span class="stat-box">🚀 Tech Innovation</span>
+    </div>
+
+    <!-- Section 1: Leadership & Market Analysis -->
+    <div class="content-section active" id="section1">
+      <h2 class="section-title">Leadership Spotlight & Market Analysis</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>🎯 Industry Leadership</h3>
+          <p>Brett Smiley, Chief Content Officer at Third Planet LLC, continues to shape U.S. iGaming coverage through platforms like Casino Reports and Props.com. His focus on consumer protection and public policy drives industry-leading content strategy.</p>
+        </div>
+        <div class="info-card">
+          <h3>📈 Market Performance</h3>
+          <p>New Jersey's online gaming sector shows continued growth, with industry analysts debating whether iGaming cannibalizes or expands traditional casino revenue. Integration of digital offerings remains crucial for brick-and-mortar operators.</p>
         </div>
       </div>
-    </div>
-
-    <!-- Slide 2: Industry Leadership & Media -->
-    <div class="slide">
-      <div class="slide-header">
-        <span class="slide-number">Industry Leadership</span>
-        <h2>Key Players & Media Evolution</h2>
-      </div>
-      <div class="content-card">
+      <div class="highlight-box">
+        <h3>🔥 Key Market Moves</h3>
         <ul>
-          <li><span class="highlight">Brett Smiley</span> leads Third Planet LLC, operating Casino Reports, Lottery Geeks, and Props.com - driving vertical specialization in U.S. online gambling coverage</li>
-          <li>Former Sports Handle co-founder brings consumer protection and public policy focus to iGaming journalism</li>
-          <li><span class="highlight">Sebastian Jarosch</span> (Mithrillium Media) highlights shift toward UX-focused affiliate models after 15+ years in the industry</li>
-          <li>Affiliate programs now prioritize personalization, content relevance, and seamless customer journeys for higher conversions</li>
+          <li>Apollo Fund acquires IGT's gaming and digital assets</li>
+          <li>Seven bids compete for three New York downstate casino licenses</li>
+          <li>Third Planet LLC expands vertical specialization in iGaming content</li>
         </ul>
       </div>
     </div>
 
-    <!-- Slide 3: Market Developments -->
-    <div class="slide">
-      <div class="slide-header">
-        <span class="slide-number">Market Overview</span>
-        <h2>Growth & Expansion Trends</h2>
+    <!-- Section 2: Regulatory & Compliance -->
+    <div class="content-section" id="section2">
+      <h2 class="section-title">Regulatory Updates & Compliance</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>🔐 Privacy & Data Protection</h3>
+          <p>European Gaming Media reinforces GDPR-compliant frameworks across platforms including EEGReport Magazine and iGamingRadio.com, emphasizing transparent user-consent-based data handling.</p>
+        </div>
+        <div class="info-card">
+          <h3>⚖️ Legal Developments</h3>
+          <p>Industry platforms continue strengthening legal frameworks against unauthorized content distribution while maintaining user-respecting data practices aligned with evolving privacy norms.</p>
+        </div>
       </div>
-      <div class="content-card">
+      <div class="highlight-box">
+        <h3>📋 Compliance Framework Updates</h3>
         <ul>
-          <li><span class="highlight">New Jersey</span> online gaming continues growth - debate ongoing whether iGaming cannibalizes or expands traditional casino market</li>
-          <li>Brick-and-mortar operators urged to modernize and integrate digital offerings</li>
-          <li><span class="highlight">Apollo Fund</span> acquires IGT's gaming and digital assets, continuing operations under IGT umbrella</li>
-          <li>Seven bidders compete for <span class="highlight">three New York downstate casino licenses</span> - heightened U.S. land-based expansion competition</li>
+          <li>Enhanced cookie management for analytics and personalized advertising</li>
+          <li>YourOnlineChoices.com standards implementation</li>
+          <li>Social sharing cookies aligned with platform privacy settings</li>
+          <li>Opt-out mechanisms for personalized advertising maintained</li>
         </ul>
       </div>
     </div>
 
-    <!-- Slide 4: Technology & Innovation -->
-    <div class="slide">
-      <div class="slide-header">
-        <span class="slide-number">Tech Innovation</span>
-        <h2>Product Launches & Gaming Tech</h2>
+    <!-- Section 3: Technology & Innovation -->
+    <div class="content-section" id="section3">
+      <h2 class="section-title">Emerging Technologies & Product Innovation</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>🎰 Product Launches</h3>
+          <p><strong>AGS:</strong> Introduced Mariachi Fortune Trio with Bonus Spin Xtreme progressive system</p>
+          <p><strong>Ainsworth:</strong> Five Fortunes series featuring innovative "five-pot mechanic"</p>
+        </div>
+        <div class="info-card">
+          <h3>💡 Tech Innovation</h3>
+          <p>Ainsworth's Neon's Bonus Blast on A-STAR Raptor cabinet demonstrates next-gen gaming cabinet technology. EveryMatrix spotlights North American expansion at ICE Barcelona 2025.</p>
+        </div>
       </div>
-      <div class="content-card">
+      <div class="highlight-box">
+        <h3>🚀 Technology Trends</h3>
         <ul>
-          <li><span class="highlight">AGS</span> introduces Mariachi Fortune Trio and Bonus Spin Xtreme progressive system</li>
-          <li><span class="highlight">Ainsworth</span> launches Five Fortunes series with innovative "five-pot mechanic" on A-STAR Raptor cabinet</li>
-          <li>Neon's Bonus Blast feature gaining traction in gaming cabinet technology</li>
-          <li><span class="highlight">EveryMatrix</span> spotlights North American market developments at ICE Barcelona 2025</li>
-          <li>Fintech integration and responsible gaming tools becoming key differentiators</li>
+          <li>Fintech integration accelerating payment innovations</li>
+          <li>UX-focused affiliate models driving higher conversions</li>
+          <li>Personalization engines enhancing player retention</li>
+          <li>Progressive jackpot systems evolving with multi-pot mechanics</li>
         </ul>
       </div>
     </div>
 
-    <!-- Slide 5: Upcoming Events -->
-    <div class="slide">
-      <div class="slide-header">
-        <span class="slide-number">Industry Calendar</span>
-        <h2>Key 2025 Events & Conferences</h2>
+    <!-- Section 4: Marketing & User Acquisition -->
+    <div class="content-section" id="section4">
+      <h2 class="section-title">Marketing Strategies & User Acquisition</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>📊 Affiliate Evolution</h3>
+          <p>Sebastian Jarosch of Mithrillium Media highlights the shift toward UX-centered affiliate strategies, emphasizing personalization, content relevance, and seamless customer journeys for higher conversions.</p>
+        </div>
+        <div class="info-card">
+          <h3>🎯 Retention Tactics</h3>
+          <p>Successful programs now rely on advanced UX practices, gamification elements, and loyalty programs. Partnership adaptability remains crucial as regulatory environments evolve.</p>
+        </div>
       </div>
-      <div class="content-card">
+      <div class="highlight-box">
+        <h3>📈 Marketing Insights</h3>
         <ul>
-          <li><span class="highlight">SiGMA Euro-Med</span> - Malta (September 1-3, 2025)</li>
-          <li><span class="highlight">Vend ASEAN</span> - Thailand (September 2-4, 2025)</li>
-          <li><span class="highlight">Indian Gaming Association Mid-Year Expo</span> - Minnesota, USA (September 8-10, 2025)</li>
-          <li>Industry focus areas: Responsible gaming, tribal casino development, iGaming expansion strategies</li>
-          <li>Growing emphasis on networking and knowledge-sharing across global markets</li>
+          <li>15+ years of affiliate program evolution shows UX as key differentiator</li>
+          <li>Content relevance drives traffic generation and player retention</li>
+          <li>Responsible gaming integration becoming marketing differentiator</li>
+          <li>Cross-platform strategies essential for modern user acquisition</li>
         </ul>
       </div>
     </div>
 
-    <!-- Slide 6: Regulatory & Compliance -->
-    <div class="slide">
-      <div class="slide-header">
-        <span class="slide-number">Regulatory Focus</span>
-        <h2>Compliance & Privacy Standards</h2>
+    <!-- Section 5: Industry Events & Future Outlook -->
+    <div class="content-section" id="section5">
+      <h2 class="section-title">Global Events & Industry Outlook 2025</h2>
+      <div class="content-grid">
+        <div class="info-card">
+          <h3>🌍 Major Events Q3 2025</h3>
+          <p><span class="badge">Sept 1-3</span> SiGMA Euro-Med, Malta</p>
+          <p><span class="badge">Sept 2-4</span> Vend ASEAN, Thailand</p>
+          <p><span class="badge">Sept 8-10</span> IGA Mid-Year Expo, Minnesota</p>
+        </div>
+        <div class="info-card">
+          <h3>🔮 Industry Trends</h3>
+          <p>Focus areas include tribal casino development, responsible gaming frameworks, and continued digital transformation of traditional gaming operations.</p>
+        </div>
       </div>
-      <div class="content-card">
+      <div class="highlight-box">
+        <h3>🎯 2025 Industry Priorities</h3>
         <ul>
-          <li>European Gaming Media implements <span class="highlight">GDPR-compliant</span> cookie and privacy management frameworks</li>
-          <li>User-consent-based data handling reflects evolving privacy norms in iGaming content sector</li>
-          <li>Advertising cookies conform to YourOnlineChoices.com standards</li>
-          <li>Industry-wide push for <span class="highlight">legal, transparent, and user-respecting</span> data practices</li>
-          <li>Unauthorized commercial redistribution of proprietary content increasingly enforced</li>
+          <li>Integration of AI and machine learning for personalization</li>
+          <li>Expansion of regulated markets globally</li>
+          <li>Enhanced responsible gaming tools and frameworks</li>
+          <li>Convergence of land-based and digital offerings</li>
+          <li>Focus on sustainable growth and player protection</li>
         </ul>
       </div>
     </div>
 
-    <!-- Slide 7: Key Takeaways -->
-    <div class="slide">
-      <div class="slide-header">
-        <span class="slide-number">Summary</span>
-        <h2>Weekly Key Takeaways</h2>
-      </div>
-      <div class="content-card">
-        <ul>
-          <li>🎯 <span class="highlight">UX-focused strategies</span> dominating affiliate marketing and user retention</li>
-          <li>📊 Online/offline integration crucial for traditional casino operators</li>
-          <li>🔧 Advanced gaming cabinets and progressive systems driving product innovation</li>
-          <li>🌍 Global conference circuit thriving with focus on emerging markets</li>
-          <li>🔒 Privacy compliance and responsible gaming becoming competitive necessities</li>
-          <li>💼 M&A activity reshaping major gaming asset ownership</li>
-        </ul>
-      </div>
+    <div class="indicator-dots">
+      <span class="dot active" data-section="1"></span>
+      <span class="dot" data-section="2"></span>
+      <span class="dot" data-section="3"></span>
+      <span class="dot" data-section="4"></span>
+      <span class="dot" data-section="5"></span>
     </div>
-  </div>
 
-  <div class="progress-bar">
-    <div class="progress-fill"></div>
-  </div>
-
-  <div class="slide-indicator">
-    <span class="dot active" onclick="goToSlide(0)"></span>
-    <span class="dot" onclick="goToSlide(1)"></span>
-    <span class="dot" onclick="goToSlide(2)"></span>
-    <span class="dot" onclick="goToSlide(3)"></span>
-    <span class="dot" onclick="goToSlide(4)"></span>
-    <span class="dot" onclick="goToSlide(5)"></span>
-    <span class="dot" onclick="goToSlide(6)"></span>
+    <div class="footer">
+      <p>© 2025 iGaming Industry Pulse | Updated in Real-Time | Sources: Industry Reports & Expert Analysis</p>
+    </div>
   </div>
 
   <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const totalSlides = slides.length;
-    let slideInterval;
+    let currentSection = 1;
+    const totalSections = 5;
+    let interval;
 
-    function showSlide(index) {
-      slides.forEach(slide => {
-        slide.classList.remove('active');
-      });
-      dots.forEach(dot => {
-        dot.classList.remove('active');
+    function showSection(sectionNumber) {
+      // Hide all sections
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
       });
       
-      slides[index].classList.add('active');
-      dots[index].classList.add('active');
+      // Show current section
+      const targetSection = document.getElementById(`section${sectionNumber}`);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
       
-      // Reset progress bar animation
+      // Update dots
+      document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === sectionNumber - 1);
+      });
+      
+      // Reset progress bar
       const progressFill = document.querySelector('.progress-fill');
       progressFill.style.animation = 'none';
       setTimeout(() => {
-        progressFill.style.animation = 'progressAnimation 10s linear infinite';
-      }, 10);
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      showSlide(currentSlide);
-    }
-
-    function goToSlide(index) {
-      currentSlide = index;
-      showSlide(currentSlide);
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 10000);
-    }
-
-    // Auto-advance slides every 10 seconds
-    slideInterval = setInterval(nextSlide, 10000);
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') {
-        nextSlide();
-        clearInterval(slideInterval);
-        slideInterval = set
+        progressFill.style.animation = '
